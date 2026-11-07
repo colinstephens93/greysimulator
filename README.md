@@ -28,3 +28,9 @@ Reduced-motion preferences reduce character movement and camera sway. Dock contr
 ## Validation
 
 Chromium automated checks cover photo processing/rendering, timed peek-a-boo rewards, lullaby state, sound activation, plush and rattle input, persistent bond, cosmetic unlocks, bubble spawning and mobile layout width. To repeat with Playwright installed, serve the root on port 8000 and run `node tests/browser.cjs`; optional `GREY_URL` and `CHROMIUM_PATH` override the target and browser executable. Test screenshots are written to `/tmp`. Safari hardware testing and listening review of synthesized audio remain manual checks.
+
+## Camera and relief update
+
+Tap **Camera**, then drag with one finger to orbit horizontally and raise/lower the viewpoint. Tap Camera again to return to caretaking. Desktop users can also Shift-drag or right-drag, and scroll to zoom. **Center** restores the default view. Orbit is limited to about 39° either side because the supplied image contains no rear or profile views.
+
+Grey now uses a sculpted 112×144 surface with anatomical volume, computed surface normals, physically lit rough material, alpha-masked cast shadows, received nursery shadows, a folded lower blanket surface and soft mattress contact shadow. This improves depth and integration but remains single-view reconstruction rather than a complete 360° character.

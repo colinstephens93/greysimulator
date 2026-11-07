@@ -14,7 +14,7 @@ Bond saves locally on this browser. Switching actions grants variety bonuses. Le
 
 ## Character and license
 
-The character is now an original model of Grey in a Nintendogs-style design, with painted textures, a striped romper, embedded glossy eyes and a full skeleton. `assets/baby/grey.glb` is approximately 492 KB with 3,394 triangles and three embedded textures. The loader keeps the same height normalization, centering, world-axis seated pose and hip-weighted mattress grounding. Grey faces the default camera after a 180° Y rotation.
+The character is now an original model of Grey in a Nintendogs-style design, with painted textures, a striped romper, embedded glossy eyes and a full skeleton. It is tuned toward the reference photo: a thin, translucent strawberry-blond fuzz with a high hairline instead of a bowl cut, blue-grey eyes, faint light brows, rosy cheeks, larger ears, an open-mouthed smile, and a cream romper with narrow sage pinstripe groups. The hair fades in through per-vertex alpha (`COLOR_0`) on an alpha-blended material. `assets/baby/grey.glb` is approximately 690 KB with three embedded textures. The loader keeps the same height normalization, centering, world-axis seated pose and hip-weighted mattress grounding. Grey faces the default camera after a 180° Y rotation.
 
 Head tracking, breathing, arm bounces and kicks remain procedural. Only the supplied `IdleBlink_Eye_L` and `IdleBlink_Eye_R` clips run through an AnimationMixer, scaling the eye objects for blinking. Their authored eye roughness is preserved; other mesh materials receive the existing .85 roughness treatment. Reduced-motion mode pauses the blink mixer.
 

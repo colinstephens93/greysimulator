@@ -14,11 +14,11 @@ Bond saves locally on this browser. Switching actions grants variety bonuses. Le
 
 ## Character and license
 
-The former photographed relief has been replaced with a full skinned mesh, physical lighting, normal/textured materials and cast/received shadows. The skeleton is adapted to a seated pose, with breathing, gaze tracking, arm bounces and alternating kicks. A secure model-loading error/retry UI replaces the photo picker.
+The character is now an original model of Grey in a Nintendogs-style design, with painted textures, a striped romper, embedded glossy eyes and a full skeleton. `assets/baby/grey.glb` is approximately 492 KB with 3,394 triangles and three embedded textures. The loader keeps the same height normalization, centering, world-axis seated pose and hip-weighted mattress grounding. Grey faces the default camera after a 180° Y rotation.
 
-The model is Grab3D's **Baby Toddler**, licensed CC0; see [source and disclosure](assets/baby/SOURCE.md) and [supplied license](assets/baby/LICENSE.txt). It is AI-assisted and generic: fuller brown hair and a sage knit outfit, rather than an exact likeness of Grey or his striped sleeveless romper. It has no facial blendshapes; independent realistic eyelid/mouth expressions would require artist-authored facial rigging. No likeness match or production photorealism is claimed. The original photograph stays as reference, not as the character texture.
+Head tracking, breathing, arm bounces and kicks remain procedural. Only the supplied `IdleBlink_Eye_L` and `IdleBlink_Eye_R` clips run through an AnimationMixer, scaling the eye objects for blinking. Their authored eye roughness is preserved; other mesh materials receive the existing .85 roughness treatment. Reduced-motion mode pauses the blink mixer.
 
-The self-hosted model is about 14 MB with 300k triangles. First load can take a moment; older mobile hardware needs performance validation. No runtime model API or third-party model hosting is required. The distributed GLB contains the original rig and walking/running clips; gameplay uses our seated procedural pose rather than those locomotion clips.
+The previous Grab3D CC0 toddler is retained at `assets/baby/baby-rigged.glb` as a manual fallback, alongside its unchanged [source disclosure](assets/baby/SOURCE.md) and [license](assets/baby/LICENSE.txt). To restore it, change the loader path back and remove the custom model's 180° rotation. The loader shows its existing error/retry UI if the custom asset cannot load; it does not silently substitute the stock character.
 
 ## Validation
 

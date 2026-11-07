@@ -1,36 +1,25 @@
 # Grey Simulator
 
-A gentle, endless photo-based caretaking sandbox. Open `index.html` through a web server (for example `python -m http.server 8000`) or host this repository on GitHub Pages. No build step. Three.js 0.160.1 is loaded from jsDelivr, so an internet connection is required.
+An endless caretaking sandbox with a fully modeled, textured and skeletal baby character in a 3D nursery. Static HTML/JS; no build step. Serve the repository root (for example `python -m http.server 8000`) or enable GitHub Pages on main/root. An internet connection is required for the pinned Three.js 0.160.1 CDN modules. Open through HTTP(S); GLB loading is not supported under file://.
+
+## Camera
+
+Tap **Camera** and drag one finger to orbit around the crib, including side and rear views. Tap Camera again to resume caretaking. Desktop also supports Shift-drag or right-drag, plus scroll to zoom. **Center** restores the starting viewpoint.
 
 ## Play
 
-- Pet & tickle: drag slowly over Grey's head to soothe; rub his tummy or feet for giggles.
-- Peek-a-boo: hold the on-screen button, the scene, or Space; release after 1.2–2.5 seconds for a bigger reaction.
-- Rattle: drag and shake at a steady rhythm.
-- Plush: select and tap the scene to squeeze.
-- Mobile: select and tap to wind 20 seconds of synthesized lullaby.
-- Bubbles / boo: a playful sound initially; shimmering bubbles unlock at level 4. Tap bubbles to pop them.
+Pet & tickle: drag slowly over the head to soothe or rub the body for giggles. Peek-a-boo: hold the scene/on-screen button or Space, then release after 1.2–2.5 seconds. Rattle: shake with a steady drag rhythm. Plush: tap to squeeze. Mobile: select and tap for a 20-second lullaby. Bubbles / boo: initially a playful sound; soap bubbles unlock at level 4.
 
-Bond saves on this browser/device. Switching activities earns a variety bonus. Levels 2–5 add colored mobile stars, bunny ears and rattle color, bubbles, and sunset lighting. Sound starts muted; use Sound off to enable it after a tap. Optional `assets/coo.mp3`, `assets/giggle.mp3`, and `assets/laugh.mp3` replace synthesized voices automatically. Missing samples safely use synthesis.
+Bond saves locally on this browser. Switching actions grants variety bonuses. Levels 2–5 add colored mobile stars, bunny ears/rattle color, bubbles and sunset lighting. Audio starts muted; tap Sound off to enable it. Optional `assets/coo.mp3`, `assets/giggle.mp3` and `assets/laugh.mp3` replace synthesized voices. Missing samples fall back to synthesis.
 
-## Image and browser behavior
+## Character and license
 
-The supplied photo is loaded automatically with relative path fallbacks. The feathered subject mask is calibrated to this exact photograph, including removal of screenshot overlays. The Load photo picker processes images locally and does not upload them. Use that picker if file:// security prevents canvas processing. Browsers that reject local image pixels also reject those pixels as WebGL textures, so a secure Blob URL from the picker is the reliable recovery, rather than an unsafe texture-upload workaround.
+The former photographed relief has been replaced with a full skinned mesh, physical lighting, normal/textured materials and cast/received shadows. The skeleton is adapted to a seated pose, with breathing, gaze tracking, arm bounces and alternating kicks. A secure model-loading error/retry UI replaces the photo picker.
 
-This is an articulated photo relief, not a reconstructed human: unseen angles, independent limb motion, and new photorealistic facial expressions cannot be recovered from one photo. Blink, breathing, gaze and joyful movements are deliberately subtle. The nursery uses procedural geometry and textures; its visual fidelity is a stylized realistic scene rather than a scanned photorealistic room. The peek cover is a soft hand-colored visual cover, not photographed anatomical hands. Procedural voices are synthesized effects, not authentic recordings of Grey.
+The model is Grab3D's **Baby Toddler**, licensed CC0; see [source and disclosure](assets/baby/SOURCE.md) and [supplied license](assets/baby/LICENSE.txt). It is AI-assisted and generic: fuller brown hair and a sage knit outfit, rather than an exact likeness of Grey or his striped sleeveless romper. It has no facial blendshapes; independent realistic eyelid/mouth expressions would require artist-authored facial rigging. No likeness match or production photorealism is claimed. The original photograph stays as reference, not as the character texture.
 
-Reduced-motion preferences reduce character movement and camera sway. Dock controls support keyboard focus; Space supports peek-a-boo. Pointer events unify mouse, pen and touch, with scene scrolling disabled. WebGL is required. Mobile Safari and real-device performance still require device validation; a consistent 60 FPS is not guaranteed.
-
-## Delivery
-
-`PLAN.md` contains the implementation review and plan. The application is self-contained in `index.html` apart from the supplied photograph, the pinned Three.js CDN dependency, and optional audio files. Hosting is ready, but GitHub Pages has not been enabled or deployed by this change.
+The self-hosted model is about 14 MB with 300k triangles. First load can take a moment; older mobile hardware needs performance validation. No runtime model API or third-party model hosting is required. The distributed GLB contains the original rig and walking/running clips; gameplay uses our seated procedural pose rather than those locomotion clips.
 
 ## Validation
 
-Chromium automated checks cover photo processing/rendering, timed peek-a-boo rewards, lullaby state, sound activation, plush and rattle input, persistent bond, cosmetic unlocks, bubble spawning and mobile layout width. To repeat with Playwright installed, serve the root on port 8000 and run `node tests/browser.cjs`; optional `GREY_URL` and `CHROMIUM_PATH` override the target and browser executable. Test screenshots are written to `/tmp`. Safari hardware testing and listening review of synthesized audio remain manual checks.
-
-## Camera and relief update
-
-Tap **Camera**, then drag with one finger to orbit horizontally and raise/lower the viewpoint. Tap Camera again to return to caretaking. Desktop users can also Shift-drag or right-drag, and scroll to zoom. **Center** restores the default view. Orbit is limited to about 39° either side because the supplied image contains no rear or profile views.
-
-Grey now uses a sculpted 112×144 surface with anatomical volume, computed surface normals, physically lit rough material, alpha-masked cast shadows, received nursery shadows, a folded lower blanket surface and soft mattress contact shadow. This improves depth and integration but remains single-view reconstruction rather than a complete 360° character.
+Chromium checks cover model load and skeleton, seated bounds, side/rear orbit and reset, interaction feedback, and a 390×844 touch-emulated layout. Run `node tests/rigged.cjs` with Playwright and Chromium installed and the local server running. Real iPhone Safari, audio listening, and sustained mobile frame-rate testing remain manual validation.

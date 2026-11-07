@@ -12,3 +12,7 @@ A single photo cannot reconstruct hidden anatomy or realistic new facial express
 ## Implementation status
 
 Steps 1–4 implemented as a playable single-file first version. Chromium desktop checks passed without JavaScript or shader errors: image load, peek sweet spot, lullaby, audio activation, plush, rattle, persistence, cosmetic unlocks, bubbles, and responsive width. Mobile screenshot review prompted tighter HUD text and removal of peek-cover edge artifacts. Real Safari/Chrome device performance, audio listening review, more realistic hands, more sophisticated segmentation and nursery visual polish remain release-hardening work; production photorealism is not claimed.
+
+## Rigged character replacement (2026-11-07)
+
+User rejected the photo-based character and approved integration of a licensed rigged baby. Replaced the relief pipeline with Grab3D's CC0 Baby Toddler GLB (source/license preserved under assets/baby). Adapted imported bones into seated V-sit; normalized posed skinned bounds; added procedural gaze, breathing, arm and leg reactions; enabled full side/rear camera orbit and loading recovery. This supersedes the original single-photo character requirement. The model is generic, with sage knit clothing and fuller hair, not an exact Grey likeness. Facial blendshape authoring and artist-quality likeness customization remain outside this stock-model integration.

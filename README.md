@@ -23,3 +23,5 @@ The self-hosted model is about 14 MB with 300k triangles. First load can take a 
 ## Validation
 
 Chromium checks cover model load and skeleton, seated bounds, side/rear orbit and reset, interaction feedback, and a 390×844 touch-emulated layout. Run `node tests/rigged.cjs` with Playwright and Chromium installed and the local server running. Real iPhone Safari, audio listening, and sustained mobile frame-rate testing remain manual validation.
+
+Seat grounding uses the lowest contact patch of hip-weighted skinned vertices, rather than the overall model's lowest vertex. The pelvis remains fixed vertically during reactions; only the upper body and limbs animate. A soft shadow stays centered beneath the seated pelvis.

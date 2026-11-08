@@ -20,3 +20,10 @@ User rejected the photo-based character and approved integration of a licensed r
 ## Current state: realistic Meshy model (2026-11-08)
 
 The realistic model pipeline and game swap are complete (7f1ea7a, 17e9fd0, c58a4ad, 6a9aab1). This supersedes the earlier stock/painted character descriptions above. Preserve grey-realistic.glb, its pre-seated rest pose, null blink mixer and procedural reactions. Both prior GLBs remain as manual fallbacks. No new model generation, export, re-seating or rig reconstruction is needed. README now reflects the active model and attribution.
+
+
+## Polish pass (2026-11-08)
+
+Fixed the realistic model's patchy, cracked skin shading and halved its size (see README). Grey now leans in from the spine to make eye contact, bounces when delighted and settles when soothed. Petting uses bone-following proxy shapes instead of skinned-mesh raycasts, and touch rewards pop a heart where you touched. Added tests/interactions.cjs.
+
+Second polish pass: closed most remaining seam cracks (edge splitting), added the nursery window and curtains, SVG icons, and a compact phone layout. Rejected RoomEnvironment lighting (greyed the palette).

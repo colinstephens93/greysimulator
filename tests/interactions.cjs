@@ -32,9 +32,12 @@ const assert = require('node:assert/strict');
   assert(ms < 1, `petZone took ${ms}ms`);
 
   // A slow stroke over the head soothes and pops a heart; a quick rub on the tummy tickles.
+  // Gesture speed is measured between pointer events, so drawing is paused during the drags:
+  // headless software rendering can take most of a second per frame, which would make any scripted drag look motionless.
+  await page.evaluate(() => { window.__render = renderer.render; renderer.render = () => {} });
   const drag = async (p, dx, steps) => { await page.mouse.move(p.x - dx, p.y); await page.mouse.down(); await page.mouse.move(p.x + dx, p.y, { steps }); await page.mouse.up(); await page.waitForTimeout(900) };
   const before = await page.evaluate(() => ({ xp, n: particles.length }));
-  await drag(spots.head, 25, 5);
+  await drag(spots.head, 20, 5);
   const afterStroke = await page.evaluate(() => ({ xp, n: particles.length, mood: document.querySelector('#mood').textContent }));
   assert(afterStroke.xp > before.xp, 'stroke rewarded');
   assert(afterStroke.n > before.n, 'stroke popped a heart');
@@ -43,6 +46,7 @@ const assert = require('node:assert/strict');
   const afterTickle = await page.evaluate(() => ({ xp, mood: document.querySelector('#mood').textContent }));
   assert(afterTickle.xp > afterStroke.xp, 'tickle rewarded');
   assert.match(afterTickle.mood, /happy/);
+  await page.evaluate(() => { renderer.render = window.__render });
 
   // He leans in from the spine; the pelvis stays grounded.
   const lean = await page.evaluate(() => { animateBaby(0); const e = new THREE.Euler().setFromQuaternion(babyRest.get('Spine').clone().invert().multiply(babyBones.Spine.quaternion)); return e.x });

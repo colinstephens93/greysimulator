@@ -16,3 +16,7 @@ Steps 1–4 implemented as a playable single-file first version. Chromium deskto
 ## Rigged character replacement (2026-11-07)
 
 User rejected the photo-based character and approved integration of a licensed rigged baby. Replaced the relief pipeline with Grab3D's CC0 Baby Toddler GLB (source/license preserved under assets/baby). Adapted imported bones into seated V-sit; normalized posed skinned bounds; added procedural gaze, breathing, arm and leg reactions; enabled full side/rear camera orbit and loading recovery. This supersedes the original single-photo character requirement. The model is generic, with sage knit clothing and fuller hair, not an exact Grey likeness. Facial blendshape authoring and artist-quality likeness customization remain outside this stock-model integration.
+
+## Current state: realistic Meshy model (2026-11-08)
+
+The realistic model pipeline and game swap are complete (7f1ea7a, 17e9fd0, c58a4ad, 6a9aab1). This supersedes the earlier stock/painted character descriptions above. Preserve grey-realistic.glb, its pre-seated rest pose, null blink mixer and procedural reactions. Both prior GLBs remain as manual fallbacks. No new model generation, export, re-seating or rig reconstruction is needed. README now reflects the active model and attribution.
